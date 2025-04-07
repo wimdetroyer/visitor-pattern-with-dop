@@ -65,3 +65,8 @@ I would gladly appreciate any feedback or suggestions you might have to improve 
 https://www.infoq.com/articles/data-oriented-programming-java/
 https://www.youtube.com/watch?v=8FRU_aGY4mY
 https://www.youtube.com/watch?v=LgquOtnjMJ8
+
+
+## To research before bejug
+
+https://www.youtube.com/watch?v=GurtoM8i2TE
