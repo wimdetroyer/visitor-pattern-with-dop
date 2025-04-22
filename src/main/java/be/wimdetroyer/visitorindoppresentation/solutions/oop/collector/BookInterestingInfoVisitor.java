@@ -23,7 +23,7 @@ public class BookInterestingInfoVisitor implements BookVisitor {
             notifyUninteresting();
             return;
         }
-        
+
         var ratings = nonFictionBook.ratings();
         var firstRating = ratings.getFirstRating();
         var secondRating = ratings.getSecondRating();
@@ -31,7 +31,7 @@ public class BookInterestingInfoVisitor implements BookVisitor {
             var firstRatingReviewer = firstRating.getReviewer();
             var secondRatingReviewer = secondRating.getReviewer();
             if (firstRatingReviewer != null && secondRatingReviewer != null) {
-                interestingInformationCollection.add(STR."A non-fiction book with two good ratings by \{firstRatingReviewer.getName()} and \{secondRatingReviewer.getName()}");
+                interestingInformationCollection.add("A non-fiction book with two good ratings by " + firstRatingReviewer.getName() + " and " + secondRatingReviewer.getName());
             } else {
                 notifyUninteresting();
             }
@@ -41,7 +41,7 @@ public class BookInterestingInfoVisitor implements BookVisitor {
         } else if (firstRating instanceof GoodRating && secondRating instanceof BadRating) {
             var firstRatingReviewer = firstRating.getReviewer();
             if (firstRatingReviewer != null) {
-                interestingInformationCollection.add(STR."A non-fiction book with one good first rating by \{firstRatingReviewer.getName()} and one bad second rating");
+                interestingInformationCollection.add("A non-fiction book with one good first rating by " + firstRatingReviewer.getName() + " and one bad second rating");
             }
 
         } else {
@@ -57,35 +57,37 @@ public class BookInterestingInfoVisitor implements BookVisitor {
 
     @Override
     public void visit(FantasyBook fantasyBook) {
-        interestingInformationCollection.add(STR."A Fantasybook with summary: \{fantasyBook.getSummary()}");
+        interestingInformationCollection.add("A Fantasybook with summary: " + fantasyBook.getSummary());
     }
 
     @Override
     public void visit(ScifiBook scifiBook) {
         if(scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.SPACE_EXPLORATION) {
-            interestingInformationCollection.add(STR."A Scifibook about space exploration by \{scifiBook.getAuthor()}");
+            interestingInformationCollection.add("A Scifibook about space exploration by " + scifiBook.getAuthor());
 
         } else if(scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.TIME_TRAVEL) {
-                    interestingInformationCollection.add(STR."A Scifibook about time travel. Here's a summary \{scifiBook.getSummary()}");
+            interestingInformationCollection.add("A Scifibook about time travel. Here's a summary " + scifiBook.getSummary());
         } else {
             notifyUninteresting();
         }
     }
 
-
-
     public String retrieveInformationCollection() {
         var interestingInformationSummary = interestingInformationCollection.stream().collect(Collectors.joining(System.lineSeparator()));
         var interestingInfoCount = interestingInformationCollection.size();
-        return STR."""
-                Found \{interestingInfoCount} pieces of interesting information in this book library.
 
-                --- Begin Interesting Information ---
-
-                \{interestingInformationSummary}
-
-                --- End Interesting Information ---
-                """;
+        return "Found " +
+               interestingInfoCount +
+               " pieces of interesting information in this book library." +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               "--- Begin Interesting Information ---" +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               interestingInformationSummary +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               "--- End Interesting Information ---";
     }
 
     private void notifyUninteresting() {

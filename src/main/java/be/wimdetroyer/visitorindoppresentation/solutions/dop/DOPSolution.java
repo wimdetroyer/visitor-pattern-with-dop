@@ -10,13 +10,13 @@ public class DOPSolution {
 
     public static void main(String[] args) {
         var mockLibrary = BookProvider.createMockLibrary();
-        var booksInterestingInfoVisitor = new BookInterestingInfoCollector();
+        var booksInterestingInfoCollector = new BookInterestingInfoCollector();
         System.out.println("-- Begin collecting interesting information ---");
         for (Book book : mockLibrary) {
-            booksInterestingInfoVisitor.collectInterestingInfo(book);
+            booksInterestingInfoCollector.collectInterestingInfo(book);
         }
         System.out.println("--- End collecting interesting information ---");
-        System.out.println(booksInterestingInfoVisitor.retrieveInformationCollection());
+        System.out.println(booksInterestingInfoCollector.retrieveInformationCollection());
     }
 
 

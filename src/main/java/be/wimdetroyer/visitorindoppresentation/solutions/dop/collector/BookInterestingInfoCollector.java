@@ -26,11 +26,11 @@ public class BookInterestingInfoCollector {
                     collectInterestingInfo(nonFictionBook);
             // (2) record deconstruction, unnamed pattern
             case ScifiBook(_, _, var author, _, var scifiTheme) when scifiTheme == ScifiTheme.SPACE_EXPLORATION ->
-                    interestingInformationCollection.add(STR."A Scifibook about space exploration by \{author}");
+                    interestingInformationCollection.add("A Scifibook about space exploration by " + author);
             case ScifiBook (_, _,String summary , _, var scifiTheme) when scifiTheme == ScifiTheme.TIME_TRAVEL ->
-                    interestingInformationCollection.add(STR."A Scifibook about time travel. Here's a short summary \{summary}");
+                    interestingInformationCollection.add("A Scifibook about time travel. Here's a short summary " + summary);
             case FantasyBook(_, _, _, String summary) ->
-                    interestingInformationCollection.add(STR."A Fantasybook with summary: \{summary}");
+                    interestingInformationCollection.add("A Fantasybook with summary: " + summary);
             // (3) multiple scenarios, avoiding default branch to have compile time safety
             case ScifiBook _, NonFictionBook _, ChildrensTaleBook _ -> notifyUninteresting();
         }
@@ -44,12 +44,12 @@ public class BookInterestingInfoCollector {
                     GoodRating(Reviewer(String firstRatingReviewerName)),
                     GoodRating(Reviewer(String secondRatingReviewerName))
             ) ->
-                    interestingInformationCollection.add(STR."A non-fiction book with two good ratings by \{firstRatingReviewerName} and \{secondRatingReviewerName}");
+                    interestingInformationCollection.add("A non-fiction book with two good ratings by " + firstRatingReviewerName + " and " + secondRatingReviewerName);
             case Ratings(
                     GoodRating(Reviewer(String firstRatingReviewerName)),
                     BadRating _)
-             ->
-                    interestingInformationCollection.add(STR."A non-fiction book with a first good rating by \{firstRatingReviewerName} and a bad second rating");
+                    ->
+                    interestingInformationCollection.add("A non-fiction book with a first good rating by " + firstRatingReviewerName + " and a bad second rating");
             case Ratings(BadRating(_), BadRating(_)) ->
                     interestingInformationCollection.add("A non-fiction book with two bad ratings");
             case Ratings(_, _) -> notifyUninteresting();
@@ -59,15 +59,19 @@ public class BookInterestingInfoCollector {
     public String retrieveInformationCollection() {
         var interestingInformationSummary = interestingInformationCollection.stream().collect(Collectors.joining(System.lineSeparator()));
         var interestingInfoCount = interestingInformationCollection.size();
-        return STR."""
-                Found \{interestingInfoCount} pieces of interesting information in this book library.
 
-                --- Begin Interesting Information ---
-
-                \{interestingInformationSummary}
-
-                --- End Interesting Information ---
-                """;
+        return "Found " +
+               interestingInfoCount +
+               " pieces of interesting information in this book library." +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               "--- Begin Interesting Information ---" +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               interestingInformationSummary +
+               System.lineSeparator() +
+               System.lineSeparator() +
+               "--- End Interesting Information ---";
     }
 
     private void notifyUninteresting() {

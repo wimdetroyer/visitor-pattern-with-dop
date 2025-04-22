@@ -8,7 +8,7 @@
 	<name>visitor-in-dop</name>
 	<description>visitor-in-dop</description>
 	<properties>
-		<java.version>22</java.version>
+		<java.version>24</java.version>
 	</properties>
 	<dependencies>
 	</dependencies>
@@ -18,8 +18,8 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>22</source>
-					<target>22</target>
+					<source>24</source>
+					<target>24</target>
 					<compilerArgs>--enable-preview</compilerArgs>
 				</configuration>
 			</plugin>
