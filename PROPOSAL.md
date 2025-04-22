@@ -58,3 +58,18 @@ If there'd be time left over, it might also be interesting to showcase the compi
 Please let me know if this is something which might be interesting to present.
 I would gladly appreciate any feedback or suggestions you might have to improve upon this, seeing as it would be **my first technical presentation, ever**.
 
+
+
+## Other resources
+
+https://www.infoq.com/articles/data-oriented-programming-java/
+https://www.youtube.com/watch?v=8FRU_aGY4mY
+https://www.youtube.com/watch?v=LgquOtnjMJ8
+
+
+## To research before bejug
+
+https://www.youtube.com/watch?v=GurtoM8i2TE
+https://openjdk.org/jeps/455
+
+https://nipafx.dev/java-visitor-pattern-pointless/
