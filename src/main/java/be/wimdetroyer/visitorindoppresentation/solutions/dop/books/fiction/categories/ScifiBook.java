@@ -7,6 +7,7 @@ public record ScifiBook(
         String title,
         String author,
         String summary,
+        int pages,
         ScifiTheme scifiTheme) implements FictionBook{
 
     public enum ScifiTheme {

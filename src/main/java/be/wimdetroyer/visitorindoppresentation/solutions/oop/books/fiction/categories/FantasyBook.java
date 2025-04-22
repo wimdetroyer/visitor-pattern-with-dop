@@ -5,8 +5,8 @@ import be.wimdetroyer.visitorindoppresentation.solutions.oop.collector.BookVisit
 
 public final class FantasyBook extends FictionBook {
 
-    public FantasyBook(String isbn, String title, String author, String summary) {
-        super(isbn, title, author, summary);
+    public FantasyBook(String isbn, String title, String author, String summary, int pages) {
+        super(isbn, title, author, summary, pages);
     }
 
     @Override

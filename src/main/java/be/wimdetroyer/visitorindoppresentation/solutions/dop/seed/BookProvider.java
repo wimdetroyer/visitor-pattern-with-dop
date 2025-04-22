@@ -1,6 +1,7 @@
 package be.wimdetroyer.visitorindoppresentation.solutions.dop.seed;
 
 import be.wimdetroyer.visitorindoppresentation.solutions.dop.books.Book;
+import be.wimdetroyer.visitorindoppresentation.solutions.dop.books.fiction.categories.ChildrensTaleBook;
 import be.wimdetroyer.visitorindoppresentation.solutions.dop.books.fiction.categories.FantasyBook;
 import be.wimdetroyer.visitorindoppresentation.solutions.dop.books.nonfiction.NonFictionBook;
 import be.wimdetroyer.visitorindoppresentation.solutions.dop.books.fiction.categories.ScifiBook;
@@ -18,21 +19,21 @@ public class BookProvider {
                 "978-1-234567-89-0",
                 "The Lost Kingdom",
                 "John Smith",
-                "In the mystical land of Avaloria, a long-forgotten kingdom resurfaces, bringing with it ancient prophecies and untold dangers."
+                "In the mystical land of Avaloria, a long-forgotten kingdom resurfaces, bringing with it ancient prophecies and untold dangers.", 100
         );
 
         FantasyBook fictionBook2 = new FantasyBook(
                 "978-1-234567-89-1",
                 "Echoes of Eternity",
                 "Emily Jones",
-                "When a mysterious artifact is discovered, it sets off a chain of events that threatens to unravel the fabric of time itself."
+                "When a mysterious artifact is discovered, it sets off a chain of events that threatens to unravel the fabric of time itself.", 100
         );
 
         ScifiBook fictionBook3 = new ScifiBook(
                 "978-1-234567-89-2",
                 "The Last Stand",
                 "David Brown",
-                "In a post-apocalyptic world, humanity's last hope lies in a small band of survivors who must confront their inner demons to rebuild civilization.",
+                "In a post-apocalyptic world, humanity's last hope lies in a small band of survivors who must confront their inner demons to rebuild civilization.",100,
                 ScifiBook.ScifiTheme.SPACE_EXPLORATION
         );
 
@@ -40,14 +41,14 @@ public class BookProvider {
                 "978-1-234567-89-3",
                 "Whispers in the Dark",
                 "Sarah Adams",
-                "When strange whispers begin haunting the residents of a small town, a group of friends embarks on a journey to uncover the truth behind the chilling voices."
+                "When strange whispers begin haunting the residents of a small town, a group of friends embarks on a journey to uncover the truth behind the chilling voices.",100
         );
 
         FantasyBook fictionBook5 = new FantasyBook(
                 "978-1-234567-89-4",
                 "Shadows of Betrayal",
                 "Michael Johnson",
-                "As kingdoms clash and alliances crumble, a young prince must navigate the treacherous waters of politics and deception to reclaim his rightful throne."
+                "As kingdoms clash and alliances crumble, a young prince must navigate the treacherous waters of politics and deception to reclaim his rightful throne.",100
         );
 
         // Non-Fiction Books
@@ -57,6 +58,7 @@ public class BookProvider {
                         "Charles Duhigg",
                         "Drawing on the latest research in psychology and neuroscience, this book explores the science behind habits and how they shape our lives.",
                 NonFictionBook.InterestingnessFactor.LIFE_CHANGING,
+                100,
                 RatingsProvider.unrated()
                 );
 
@@ -66,6 +68,7 @@ public class BookProvider {
                         "Yuval Noah Harari",
                         "From the emergence of Homo sapiens to the present day, this book provides a sweeping narrative of human history and the forces that have shaped our species.",
                 NonFictionBook.InterestingnessFactor.LIFE_CHANGING,
+                100,
                 RatingsProvider.twoBadRatings()
                 );
 
@@ -75,6 +78,7 @@ public class BookProvider {
                         "Mark Manson",
                         "By embracing the uncomfortable truths of life, this book offers a refreshing approach to living a meaningful and fulfilling existence. ahdiahfuiuf hidfuhaiufhaeiufhf iufhaidzadzadzadazdazdazdazdazdazdazdau",
                 NonFictionBook.InterestingnessFactor.LIFE_CHANGING,
+                100,
                 RatingsProvider.twoGoodRatings()
                 );
 
@@ -84,6 +88,7 @@ public class BookProvider {
                         "Tara Westover",
                         "A powerful memoir of resilience and self-discovery, this book chronicles the author's journey from a survivalist upbringing to earning a PhD from Cambridge University.",
                 NonFictionBook.InterestingnessFactor.INTERESTING,
+                100,
                 RatingsProvider.oneGoodOneBadRating()
                 );
 
@@ -93,8 +98,43 @@ public class BookProvider {
                         "Dale Carnegie",
                         "This timeless classic offers practical advice on how to improve communication skills and build meaningful relationships.",
                 NonFictionBook.InterestingnessFactor.LIFE_CHANGING,
+                100,
                 RatingsProvider.twoGoodRatings()
                 );
+
+
+        ChildrensTaleBook childrensTaleBook1 = new ChildrensTaleBook(
+                "978-0-543210-12-3",
+                "The Invisible Story",
+                "Emma Wright",
+                "A magical tale about imagination that requires no pages at all!",
+                0
+        );
+
+        ChildrensTaleBook childrensTaleBook2 = new ChildrensTaleBook(
+                "978-0-123456-78-9",
+                "100 Adventures of Timmy",
+                "Sarah Johnson",
+                "Follow Timmy as he embarks on exactly 100 mini-adventures, one per page!",
+                100
+        );
+
+        ChildrensTaleBook childrensTaleBook3 = new ChildrensTaleBook(
+                "978-3-210987-65-4",
+                "The Epic Encyclopedia of Fairy Tales",
+                "David Thompson",
+                "The most comprehensive collection of fairy tales ever written for young minds.",
+                1200
+        );
+
+// This one would trigger the default case
+        ChildrensTaleBook childrensTaleBook4 = new ChildrensTaleBook(
+                "978-5-876543-21-0",
+                "The Little Dragon's Journey",
+                "Rebecca Chen",
+                "A heartwarming story about a baby dragon learning to fly.",
+                42
+        );
 
         // Add all books to the library
         library.add(fictionBook1);
@@ -107,6 +147,10 @@ public class BookProvider {
         library.add(nonFictionBook3);
         library.add(nonFictionBook4);
         library.add(nonFictionBook5);
+        library.add(childrensTaleBook1);
+        library.add(childrensTaleBook2);
+        library.add(childrensTaleBook3);
+        library.add(childrensTaleBook4);
 
         return library;
     }

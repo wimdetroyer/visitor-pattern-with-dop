@@ -10,4 +10,5 @@ public sealed interface Book permits FictionBook, NonFictionBook {
      String title();
      String author();
      String summary();
+     int pages();
 }

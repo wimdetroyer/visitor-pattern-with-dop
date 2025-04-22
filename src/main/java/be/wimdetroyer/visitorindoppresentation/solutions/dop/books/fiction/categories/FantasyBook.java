@@ -6,5 +6,5 @@ public record FantasyBook(
         String isbn,
         String title,
         String author,
-        String summary) implements FictionBook{
+        String summary,int pages) implements FictionBook{
 }

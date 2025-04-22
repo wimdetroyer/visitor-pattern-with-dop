@@ -24,15 +24,16 @@ public class BookInterestingInfoCollector {
             // (1) Guard pattern with a when clause
             case NonFictionBook nonFictionBook when nonFictionBook.interestingnessFactor().isAtleastInteresting() ->
                     collectInterestingInfo(nonFictionBook);
-            // (2) record deconstruction, unnamed pattern
-            case ScifiBook(_, _, var author, _, var scifiTheme) when scifiTheme == ScifiTheme.SPACE_EXPLORATION ->
+            // (2) record deconstruction, unnamed pattern (_)
+            case ScifiBook(_, _, var author, _, _, var scifiTheme) when scifiTheme == ScifiTheme.SPACE_EXPLORATION ->
                     interestingInformationCollection.add("A Scifibook about space exploration by " + author);
-            case ScifiBook (_, _,String summary , _, var scifiTheme) when scifiTheme == ScifiTheme.TIME_TRAVEL ->
+            case ScifiBook(_, _, String summary, _,_, var scifiTheme) when scifiTheme == ScifiTheme.TIME_TRAVEL ->
                     interestingInformationCollection.add("A Scifibook about time travel. Here's a short summary " + summary);
-            case FantasyBook(_, _, _, String summary) ->
+            case FantasyBook(_, _, _, String summary,_) ->
                     interestingInformationCollection.add("A Fantasybook with summary: " + summary);
-            // (3) multiple scenarios, avoiding default branch to have compile time safety
-            case ScifiBook _, NonFictionBook _, ChildrensTaleBook _ -> notifyUninteresting();
+            case ChildrensTaleBook childrensTaleBook -> collectInterestingInfo(childrensTaleBook);
+            // (3) multiple scenarios, avoiding default branch to have compile time safety if adding a new book
+            case ScifiBook _, NonFictionBook _ -> notifyUninteresting();
         }
     }
 
@@ -47,14 +48,27 @@ public class BookInterestingInfoCollector {
                     interestingInformationCollection.add("A non-fiction book with two good ratings by " + firstRatingReviewerName + " and " + secondRatingReviewerName);
             case Ratings(
                     GoodRating(Reviewer(String firstRatingReviewerName)),
-                    BadRating _)
-                    ->
+                    BadRating _
+            ) ->
                     interestingInformationCollection.add("A non-fiction book with a first good rating by " + firstRatingReviewerName + " and a bad second rating");
             case Ratings(BadRating(_), BadRating(_)) ->
                     interestingInformationCollection.add("A non-fiction book with two bad ratings");
             case Ratings(_, _) -> notifyUninteresting();
         }
     }
+
+    private void collectInterestingInfo(ChildrensTaleBook childrensTaleBook) {
+
+        // (5) https://openjdk.org/jeps/488 - Primitive Types in Patterns (PREVIEW FEATURE!)
+        switch (childrensTaleBook.pages()) {
+            case 0 -> interestingInformationCollection.add("This childrens' book has 0 pages. Use your imagination I suppose.");
+            case 100 -> interestingInformationCollection.add("This childrens' book has exactly 100 pages. interesting somehow!");
+            case int i when i >= 1000 -> interestingInformationCollection.add("This childrens' book has exactly 100 pages. interesting somehow!");
+            case int _ -> notifyUninteresting();
+        }
+    }
+
+
 
     public String retrieveInformationCollection() {
         var interestingInformationSummary = interestingInformationCollection.stream().collect(Collectors.joining(System.lineSeparator()));

@@ -28,10 +28,10 @@ public final class NonFictionBook extends Book {
     }
 
 
-    public NonFictionBook(String isbn, String title, String author, String summary, InterestingnessFactor interestingnessFactor, Ratings ratings) {
+    public NonFictionBook(String isbn, String title, String author, String summary, int pages, InterestingnessFactor interestingnessFactor, Ratings ratings) {
         Objects.requireNonNull(interestingnessFactor);
         Objects.requireNonNull(ratings);
-        super(isbn, title, author, summary);
+        super(isbn, title, author, summary, pages);
         this.interestingnessFactor = interestingnessFactor;
         this.ratings = ratings;
     }

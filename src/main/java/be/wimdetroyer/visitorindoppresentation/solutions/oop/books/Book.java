@@ -8,12 +8,13 @@ public abstract class Book implements Visitable {
      private final String title;
      private final String author;
      private final String summary;
-
-     public Book(String isbn, String title, String author, String summary) {
+     private final int pages;
+     public Book(String isbn, String title, String author, String summary, int pages) {
           this.isbn = isbn;
           this.title = title;
           this.author = author;
           this.summary = summary;
+         this.pages = pages;
      }
 
      public String getIsbn() {
@@ -30,5 +31,9 @@ public abstract class Book implements Visitable {
 
      public String getSummary() {
           return summary;
+     }
+
+     public int getPages() {
+          return pages;
      }
 }

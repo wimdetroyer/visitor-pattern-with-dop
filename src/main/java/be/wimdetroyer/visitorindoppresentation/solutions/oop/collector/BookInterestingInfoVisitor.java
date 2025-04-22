@@ -16,7 +16,7 @@ public class BookInterestingInfoVisitor implements BookVisitor {
 
     private final List<String> interestingInformationCollection = new ArrayList<>();
 
-
+    // Vanilla OOP implementation.
     @Override
     public void visit(NonFictionBook nonFictionBook) {
         if (!nonFictionBook.interestingnessFactor().isAtleastInteresting()) {
@@ -35,8 +35,7 @@ public class BookInterestingInfoVisitor implements BookVisitor {
             } else {
                 notifyUninteresting();
             }
-        }
-        else if (firstRating instanceof BadRating && secondRating instanceof BadRating) {
+        } else if (firstRating instanceof BadRating && secondRating instanceof BadRating) {
             interestingInformationCollection.add("A non-fiction book with two bad ratings");
         } else if (firstRating instanceof GoodRating && secondRating instanceof BadRating) {
             var firstRatingReviewer = firstRating.getReviewer();
@@ -52,7 +51,16 @@ public class BookInterestingInfoVisitor implements BookVisitor {
 
     @Override
     public void visit(ChildrensTaleBook childrensTaleBook) {
-        notifyUninteresting();
+        int pages = childrensTaleBook.getPages();
+        if (pages == 0) {
+            interestingInformationCollection.add("This childrens' book has 0 pages. Use your imagination I suppose.");
+        } else if (pages == 100) {
+            interestingInformationCollection.add("This childrens' book has exactly 100 pages. interesting somehow!");
+        } else if (pages >= 1000) {
+            interestingInformationCollection.add("This childrens' book has more than 1000 pages. That's quite long for children!");
+        } else {
+            notifyUninteresting();
+        }
     }
 
     @Override
@@ -62,10 +70,10 @@ public class BookInterestingInfoVisitor implements BookVisitor {
 
     @Override
     public void visit(ScifiBook scifiBook) {
-        if(scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.SPACE_EXPLORATION) {
+        if (scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.SPACE_EXPLORATION) {
             interestingInformationCollection.add("A Scifibook about space exploration by " + scifiBook.getAuthor());
 
-        } else if(scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.TIME_TRAVEL) {
+        } else if (scifiBook.getScifiTheme() == ScifiBook.ScifiTheme.TIME_TRAVEL) {
             interestingInformationCollection.add("A Scifibook about time travel. Here's a summary " + scifiBook.getSummary());
         } else {
             notifyUninteresting();

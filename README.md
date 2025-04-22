@@ -15,7 +15,7 @@ Books always have the following properties:
 - title
 - author
 - summary
-
+- pages
 
 ### Fiction books
 
@@ -71,7 +71,11 @@ Collect the information: "A Scifibook about time travel. Here's a short summary 
 
 #### Childrens' tale book
 
-A childrens' tale book is **never** interesting.
+Children's tale books can be interesting under specific conditions:
+- Books with 0 pages are considered interesting as they leave everything to imagination
+- Books with exactly 100 pages have a certain appeal
+- Books with 1000 or more pages are noteworthy due to their unusual length for children's literature
+- All other children's tale books are not considered interesting
 
 ### What if a book is uninteresting?
 

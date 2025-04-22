@@ -9,8 +9,8 @@ public final class ScifiBook extends FictionBook  {
     private final ScifiTheme scifiTheme;
 
 
-    public ScifiBook(String isbn, String title, String author, String summary, ScifiTheme scifiTheme) {
-        super(isbn, title, author, summary);
+    public ScifiBook(String isbn, String title, String author, String summary, ScifiTheme scifiTheme, int pages) {
+        super(isbn, title, author, summary, pages);
         this.scifiTheme = scifiTheme;
     }
 

@@ -7,8 +7,8 @@ import be.wimdetroyer.visitorindoppresentation.solutions.oop.collector.BookVisit
 
 public final class ChildrensTaleBook extends FictionBook  {
 
-    public ChildrensTaleBook(String isbn, String title, String author, String summary) {
-        super(isbn, title, author, summary);
+    public ChildrensTaleBook(String isbn, String title, String author, String summary, int pages) {
+        super(isbn, title, author, summary, pages);
     }
 
     @Override

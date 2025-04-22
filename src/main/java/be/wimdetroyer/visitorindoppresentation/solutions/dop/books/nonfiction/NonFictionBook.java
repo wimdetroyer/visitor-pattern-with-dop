@@ -11,6 +11,7 @@ public record NonFictionBook(
         String author,
         String summary,
         InterestingnessFactor interestingnessFactor,
+        int pages,
         Ratings ratings) implements Book {
 
 
