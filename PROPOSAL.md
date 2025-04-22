@@ -71,3 +71,5 @@ https://www.youtube.com/watch?v=LgquOtnjMJ8
 
 https://www.youtube.com/watch?v=GurtoM8i2TE
 https://openjdk.org/jeps/455
+
+https://nipafx.dev/java-visitor-pattern-pointless/
